@@ -35,7 +35,6 @@
       <th scope="col">Direccion</th>
       <th scope="col">Modificar</th>
       <th scope="col">Eliminar</th>
-      <th scope="col">Deshabilitar</th>
 
     </tr>
   </thead>
@@ -82,17 +81,11 @@
                   <?php echo form_close(); ?>
                 </td>
                 
-                <td>
-                  <?php echo form_open_multipart('usuarios/eliminarbd'); ?>
-                  <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario; ?>">
-                  <button type="submit" class="btn btn-danger">ELIMINAR</button>
-                  <?php echo form_close(); ?>
-                </td>
 
                 <td>
                   <?php echo form_open_multipart('usuarios/deshabilitarbd'); ?>
                   <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario; ?>">
-                  <button type="submit" class="btn btn-warning" value="DESHABILITAR">DESHABILITAR</button>
+                  <button type="submit" class="btn btn-danger" value="DESHABILITAR">DESHABILITAR</button>
                   <?php echo form_close(); ?>
                 </td>
 
