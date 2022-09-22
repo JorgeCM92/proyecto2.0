@@ -8,10 +8,6 @@
         <button type="submit" class="btn btn-success" name="enviar">REPORTE PDF</button>
         <?php echo form_close(); ?>
         <br>
-        <?php echo form_open_multipart('cliente/deshabilitados');?>
-        <button type="submit" class="btn btn-warning" name="deshabilitados">VER CLIENTES DESHABILITADOS</button>
-        <?php echo form_close();?>
-        <br>
 
         <?php 
         echo form_open_multipart('cliente/agregar');

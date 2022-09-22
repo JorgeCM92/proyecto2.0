@@ -9,10 +9,6 @@
         <button type="submit" class="btn btn-success" name="enviar">REPORTE PDF</button>
         <?php echo form_close(); ?>
         <br>
-        <?php echo form_open_multipart('motocicleta/deshabilitados');?>
-        <button type="submit" class="btn btn-warning" name="deshabilitados">VER MOTOCICLETAS DESHABILITADAS</button>
-        <?php echo form_close();?>
-        <br>
 
         <?php 
         echo form_open_multipart('motocicleta/agregar');
