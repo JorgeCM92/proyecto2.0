@@ -19,9 +19,7 @@
       <th scope="col">Rol Usuario</th>
       <th scope="col">Nombre Completo</th>
       <th scope="col">Cedula Identidad</th>
-      <th scope="col">Fecha Nacimiento</th>
       <th scope="col">Telefono</th>
-      <th scope="col">Correo Electronico</th>
       <th scope="col">Direccion</th>
       <th scope="col">Habilitar</th>
 
@@ -36,30 +34,11 @@
 
         <tr>
                 <th scope="row"><?php echo $indice; ?></th>
-                <td>
-                    <?php 
-                    $foto=$row->foto;
-                    if($foto=="")
-                    {
-                        ?>
-                        <img src="<?php echo base_url(); ?>/uploads/user.jpg" width="50px">
-                        <?php    
-                    }
-                    else
-                    {
-                        ?>
-                        <img src="<?php echo base_url(); ?>/uploads/<?php echo $foto; ?>" width="50px">
-                        <?php
-                    }
-                    ?>
-                </td>
                 <td><?php echo $row->login; ?></td>
                 <td><?php echo $row->tipo; ?></td>
                 <td><?php echo ($row->nombres.' '.$row->primerApellido.' '.$row->segundoApellido); ?></td>
                 <td><?php echo $row->cedulaIdentidad; ?></td>
-                <td><?php echo formatearFecha($row->fechaNacimiento); ?></td>
                 <td><?php echo $row->telefono; ?></td>
-                <td><?php echo $row->correoElectronico; ?></td>
                 <td><?php echo $row->direccion; ?></td>
 
                 <td>

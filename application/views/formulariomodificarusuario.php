@@ -27,10 +27,6 @@
                     <option>guest</option>
                 </select>
             </div><br>
-            <div class="col-md-5">
-                <label for="inputPas" class="form-label">Foto:</label>
-                <input type="file" name="userfile" class="form-control" id="exampleInputUser">
-            </div>
             <div class="col-md-6">
                 <label for="inputN" class="form-label">Nombres:</label>
                 <input type="text" name="nombres" class="form-control" placeholder="Ingrese su nombre" aria-label="First name" required value="<?php echo $row->nombres; ?>">
@@ -47,17 +43,9 @@
                 <label for="inputCI" class="form-label">Cedula Identidad:</label>
                 <input type="text" name="cedulaidentidad" class="form-control" id="inputCI" placeholder="Cedula Identidad" required value="<?php echo $row->cedulaIdentidad; ?>">
             </div>
-            <div class="col-md-2">
-                <label for="inputFN" class="form-label">Fecha Nacimiento:</label>
-                <input type="date" name="fechanacimiento" class="form-control" id="inputFN" required value="<?php echo $row->fechaNacimiento; ?>">
-            </div>
             <div class="col-md-6">
                 <label for="inputT" class="form-label">Telefono:</label>
                 <input type="text" name="telefono" class="form-control" id="inputT" placeholder="Ingrese su telefono" required value="<?php echo $row->telefono; ?>">
-            </div>
-            <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Correo Electronico:</label>
-                <input type="email" name="correoelectronico" class="form-control" id="inputEmail4" placeholder="Ingrese su correo" required value="<?php echo $row->correoElectronico; ?>">
             </div>
             <div class="col-12">
                 <label for="inputAddress2" class="form-label">Direccion:</label>

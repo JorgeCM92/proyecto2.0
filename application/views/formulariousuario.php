@@ -25,10 +25,6 @@
                     <option>guest</option>
                 </select>
             </div>
-            <div class="col-md-5">
-                <label for="inputPas" class="form-label">Foto:</label>
-                <input type="file" name="userfile" class="form-control" id="exampleInputUser">
-            </div>
             <div class="col-md-6">
                 <label for="inputN" class="form-label">Nombres:</label>
                 <input type="text" name="nombres" class="form-control" placeholder="Ingrese su nombre" aria-label="First name" required>
@@ -45,17 +41,9 @@
                 <label for="inputCI" class="form-label">Cedula Identidad:</label>
                 <input type="text" name="cedulaidentidad" class="form-control" id="inputCI" placeholder="Cedula Identidad" required>
             </div>
-            <div class="col-md-2">
-                <label for="inputFN" class="form-label">Fecha Nacimiento:</label>
-                <input type="date" name="fechanacimiento" class="form-control" id="inputFN" required>
-            </div>
             <div class="col-md-6">
                 <label for="inputT" class="form-label">Telefono:</label>
                 <input type="text" name="telefono" class="form-control" id="inputT" placeholder="Ingrese su telefono" required>
-            </div>
-            <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Correo Electronico:</label>
-                <input type="email" name="correoelectronico" class="form-control" id="inputEmail4" placeholder="Ingrese su correo" required>
             </div>
             <div class="col-12">
                 <label for="inputAddress2" class="form-label">Direccion:</label>

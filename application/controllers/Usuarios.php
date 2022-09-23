@@ -130,9 +130,7 @@ class Usuarios extends CI_Controller {
                 $data['primerApellido']=$_POST['primerapellido'];
                 $data['segundoApellido']=$_POST['segundoapellido'];
                 $data['cedulaIdentidad']=$_POST['cedulaidentidad'];
-                $data['fechaNacimiento']=$_POST['fechanacimiento'];
                 $data['telefono']=$_POST['telefono'];
-                $data['correoElectronico']=$_POST['correoelectronico'];
                 $data['direccion']=$_POST['direccion'];
                 
                 $this->usuario_model->agregarusuario($data);
@@ -171,38 +169,8 @@ class Usuarios extends CI_Controller {
                 $data['primerApellido']=$_POST['primerapellido'];
                 $data['segundoApellido']=$_POST['segundoapellido'];
                 $data['cedulaIdentidad']=$_POST['cedulaidentidad'];
-                $data['fechaNacimiento']=$_POST['fechanacimiento'];
                 $data['telefono']=$_POST['telefono'];
-                $data['correoElectronico']=$_POST['correoelectronico'];
                 $data['direccion']=$_POST['direccion'];
-
-                $nombrearchivo=$idusuario.".jpg";
-
-                //Ruta donde se guardan los archivos
-                $config['upload_path']='./uploads/';
-                //Nombre del archivo
-                $config['file_name']=$nombrearchivo;
-                $direccion="./uploads/".$nombrearchivo;
-
-                //control de la existencia del archivo
-                if(file_exists($direccion))
-                {
-                        unlink($direccion);
-                }
-
-                //Tipos de archivos permitidos
-                $config['allowed_types']='jpg';
-                $this->load->library('upload',$config);
-
-                if(!$this->upload->do_upload())
-                {
-                        $data['error']=$this->upload->display_errors();
-                }
-                else
-                {
-                        $data['foto']=$nombrearchivo;
-                }
-
                 
                 
                 $this->usuario_model->modificarusuario($idusuario,$data);
