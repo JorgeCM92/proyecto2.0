@@ -109,11 +109,12 @@ class Usuarios extends CI_Controller {
 
         public function agregar()
 	{
-
+                $lista=$this->sucursal_model->listasucursales();
+                $data['sucursal']=$lista;
                 $this->load->view('inc/headersbadmin2');
                 $this->load->view('inc/sidebarsbadmin2');
                 $this->load->view('inc/topbarsbadmin2');
-                $this->load->view('formulariousuario');
+                $this->load->view('formulariousuario',$data);
                 $this->load->view('inc/creditossbadmin2');
                 $this->load->view('inc/footersbadmin2');        
                 /*$this->load->view('inc/header');
@@ -124,7 +125,6 @@ class Usuarios extends CI_Controller {
 	{
                 $data['login']=$_POST['login'];
                 $data['password']=md5($_POST['password']);
-                //$data['idSucursal']=$_POST['idsucursal'];
                 $data['tipo']=$_POST['tipo'];
                 $data['nombres']=$_POST['nombres'];
                 $data['primerApellido']=$_POST['primerapellido'];
@@ -132,6 +132,7 @@ class Usuarios extends CI_Controller {
                 $data['cedulaIdentidad']=$_POST['cedulaidentidad'];
                 $data['telefono']=$_POST['telefono'];
                 $data['direccion']=$_POST['direccion'];
+                $data['idSucursal']=$_POST['idSucursal'];
                 
                 $this->usuario_model->agregarusuario($data);
                 redirect('usuarios/index2','refresh');
