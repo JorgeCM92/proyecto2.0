@@ -50,6 +50,19 @@
             <div class="col-12">
                 <label for="inputAddress2" class="form-label">Direccion:</label>
                 <input type="text" name="direccion" class="form-control" id="inputAddress2" placeholder="Ingrese la direccion de su domicilio" required value="<?php echo $row->direccion; ?>">
+            </div>
+            <div class="col-12">
+            <label for="inputT" class="form-label">Sucursal:</label>
+            <select name="idSucursal" class="form-control">
+                <option>Seleccione una Sucursal</option>
+                <?php
+                foreach($sucursal->result() as $row)
+                {?>
+                    <option value="<?php echo $row->idSucursal;?>"><?php echo $row->nombreSucursal;?></option>
+                <?php
+                }
+                ?>
+            </select>
             </div><br>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Modificar Usuario</button>

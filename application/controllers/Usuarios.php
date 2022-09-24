@@ -149,7 +149,9 @@ class Usuarios extends CI_Controller {
         {
                 $idusuario=$_POST['idusuario'];
                 $data['infousuario']=$this->usuario_model->recuperarusuario($idusuario);
-                
+
+                $lista=$this->sucursal_model->listasucursales();
+                $data['sucursal']=$lista;
                 $this->load->view('inc/headersbadmin2');
                 $this->load->view('inc/sidebarsbadmin2');
                 $this->load->view('inc/topbarsbadmin2');
@@ -172,10 +174,10 @@ class Usuarios extends CI_Controller {
                 $data['cedulaIdentidad']=$_POST['cedulaidentidad'];
                 $data['telefono']=$_POST['telefono'];
                 $data['direccion']=$_POST['direccion'];
+                $data['idSucursal']=$_POST['idSucursal'];
                 
                 
                 $this->usuario_model->modificarusuario($idusuario,$data);
-                $this->upload->data();
                 redirect('usuarios/index2','refresh');
         }
 
