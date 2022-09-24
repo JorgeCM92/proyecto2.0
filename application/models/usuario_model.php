@@ -17,9 +17,11 @@ class Usuario_model extends CI_Model {
 
         public function listausuarios()
 	{
-                $this->db->select('*'); //select *
-                $this->db->from('usuario'); //tabla
-                $this->db->where('estado','1');
+                $this->db->select('U.idUsuario, U.login, U.tipo, U.nombres, U.primerApellido, U.segundoApellido, U.cedulaIdentidad, 
+                U.telefono, U.direccion, U.estado, U.idSucursal, S.idSucursal, S.nombreSucursal'); //select *
+                $this->db->from('usuario U'); //tabla
+                $this->db->where('U.estado','1');
+                $this->db->join('sucursal S', 'S.idSucursal=U.idSucursal');
                 return $this->db->get(); //devolucion del resultado de la consulta
 	}
 

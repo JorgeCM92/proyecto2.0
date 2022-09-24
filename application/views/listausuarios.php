@@ -30,6 +30,7 @@
       <th scope="col">Cedula Identidad</th>
       <th scope="col">Telefono</th>
       <th scope="col">Direccion</th>
+      <th scope="col">Sucursal</th>
       <th scope="col">Modificar</th>
       <th scope="col">Eliminar</th>
 
@@ -50,6 +51,7 @@
                 <td><?php echo $row->cedulaIdentidad; ?></td>
                 <td><?php echo $row->telefono; ?></td>
                 <td><?php echo $row->direccion; ?></td>
+                <td><?php echo $row->nombreSucursal;?></td>
                 
 
                 <td>
