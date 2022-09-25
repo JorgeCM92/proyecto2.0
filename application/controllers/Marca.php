@@ -79,7 +79,7 @@ class Marca extends CI_Controller {
 
         public function modificar()
         {
-                $idsucursal=$_POST['idmarca'];
+                $idmarca=$_POST['idmarca'];
                 $data['infomarca']=$this->marca_model->recuperarmarca($idmarca);
                 
                 $this->load->view('inc/headersbadmin2');
