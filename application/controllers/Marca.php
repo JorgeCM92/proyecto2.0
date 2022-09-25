@@ -9,7 +9,7 @@ class Marca extends CI_Controller {
                 if($this->session->userdata('tipo')=='admin')
                 {
                         $lista=$this->marca_model->listamarcas();
-                        $data['sucursales']=$lista;
+                        $data['marcas']=$lista;
 
 
                         $this->load->view('inc/headersbadmin2');
@@ -38,7 +38,7 @@ class Marca extends CI_Controller {
                         $this->load->view('inc/headersbadmin2');
                         $this->load->view('inc/sidebarsbadmin2guest');
                         $this->load->view('inc/topbarsbadmin2');
-                        $this->load->view('panelguestlistasucursales',$data);
+                        $this->load->view('panelguestlistamarcas',$data);
                         $this->load->view('inc/creditossbadmin2');
                         $this->load->view('inc/footersbadmin2');
                 }  
@@ -72,7 +72,6 @@ class Marca extends CI_Controller {
         public function agregarbd()
 	{
                 $data['nombreMarca']=$_POST['nombremarca'];
-                
                 $this->marca_model->agregarmarca($data);
                 redirect('marca/index','refresh');
 	}

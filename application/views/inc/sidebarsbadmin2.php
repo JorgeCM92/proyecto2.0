@@ -36,6 +36,11 @@
                 <button type="submit" class="btn btn-dark border-bottom-secondary border-left-secondary" >SUCURSALES</button>
                 <?php echo form_close();?>
             </li>
+            <li class="nav-item">
+                <?php echo form_open_multipart('marca/index');?>
+                <button type="submit" class="btn btn-dark border-bottom-secondary border-left-secondary" >MARCAS</button>
+                <?php echo form_close();?>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

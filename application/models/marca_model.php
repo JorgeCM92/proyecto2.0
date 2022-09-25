@@ -31,13 +31,13 @@ class Marca_model extends CI_Model {
                 return $this->db->get(); //devolucion del resultado de la consulta
         }
 
-        public function modificarmarcas($idmarca,$data)
+        public function modificarmarca($idmarca,$data)
         {
                 $this->db->where('idMarca',$idmarca);
                 $this->db->update('marca',$data);
         }
 
-        public function listamarcashabilitados()
+        public function listamarcasdeshabilitados()
         {
                 $this->db->select('*'); //select *
                 $this->db->from('marca'); //tabla
