@@ -75,9 +75,7 @@ class Cliente extends CI_Controller {
                 $data['primerApellido']=$_POST['primerapellido'];
                 $data['segundoApellido']=$_POST['segundoapellido'];
                 $data['cedulaIdentidad']=$_POST['cedulaidentidad'];
-                $data['fechaNacimiento']=$_POST['fechanacimiento'];
                 $data['telefono']=$_POST['telefono'];
-                $data['correoElectronico']=$_POST['correoelectronico'];
                 $data['direccion']=$_POST['direccion'];
                 
                 $this->cliente_model->agregarcliente($data);
@@ -114,9 +112,7 @@ class Cliente extends CI_Controller {
                 $data['primerApellido']=$_POST['primerapellido'];
                 $data['segundoApellido']=$_POST['segundoapellido'];
                 $data['cedulaIdentidad']=$_POST['cedulaidentidad'];
-                $data['fechaNacimiento']=$_POST['fechanacimiento'];
                 $data['telefono']=$_POST['telefono'];
-                $data['correoElectronico']=$_POST['correoelectronico'];
                 $data['direccion']=$_POST['direccion'];
                 $data['fechaActualizacion']=date('Y-m-d H:i:s');
 
@@ -200,9 +196,7 @@ class Cliente extends CI_Controller {
                         $this->pdf->Cell(22,5,'APELLIDO 1','TBLR',0,'L',1);
                         $this->pdf->Cell(22,5,'APELLIDO 2','TBLR',0,'L',1);
                         $this->pdf->Cell(18,5,'CI','TBLR',0,'L',1);
-                        $this->pdf->Cell(20,5,'F.NACIM.','TBLR',0,'L',1);
                         $this->pdf->Cell(35,5,'TELEFONO','TBLR',0,'L',1);
-                        $this->pdf->Cell(45,5,'CORREO ELECTRONICO','TBLR',0,'L',1);
                         $this->pdf->Cell(55,5,'DIRECCION','TBLR',0,'L',1);
                         $this->pdf->Ln(5);
 
@@ -231,9 +225,7 @@ class Cliente extends CI_Controller {
                                 $primerapellido=$row->primerApellido;
                                 $segundoapellido=$row->segundoApellido;
                                 $cedulaidentidad=$row->cedulaIdentidad;
-                                $fecha=formatearFecha($row->fechaNacimiento);
-                                $telefono=$row->telefono; 
-                                $correoelectronico=$row->correoElectronico;
+                                $telefono=$row->telefono;
                                 $direccion=$row->direccion;
 
                                 /*CELL (ancho,alto,impresion,,borde, ln)
@@ -259,9 +251,7 @@ class Cliente extends CI_Controller {
                                 $this->pdf->Cell(22,5,$primerapellido,'TBLR',0,'L',0);
                                 $this->pdf->Cell(22,5,$segundoapellido,'TBLR',0,'L',0);
                                 $this->pdf->Cell(18,5,$cedulaidentidad,'TBLR',0,'L',0);
-                                $this->pdf->Cell(20,5,$fecha,'TBLR',0,'L',0);
                                 $this->pdf->Cell(35,5,$telefono,'TBLR',0,'L',0);
-                                $this->pdf->Cell(45,5,$correoelectronico,'TBLR',0,'L',0);
                                 $this->pdf->Cell(55,5,$direccion,'TBLR',0,'L',0);
                                 $this->pdf->Ln(5);
                         }

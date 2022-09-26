@@ -208,8 +208,8 @@ class Producto extends CI_Controller {
                         $this->pdf->SetFont('Arial','',9);// el FONT para la parte de abajo del documento
                         $num=1;//nos creamos un correlativo 
                         foreach($lista as $row){
-                                $marca=$row->marca;
-                                $tipoModelo=$row->tipoModelo;
+                                $marca=$row->nombreMarca;
+                                $tipoModelo=$row->nombreModelo;
                                 $color=$row->color;
                                 $anioModelo=$row->anioModelo;
                                 $nroChasis=$row->nroChasis;
