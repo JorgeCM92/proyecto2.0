@@ -24,9 +24,7 @@
       <th scope="col">Primer Apellido</th>
       <th scope="col">Segundo Apellido</th>
       <th scope="col">Cedula Identidad</th>
-      <th scope="col">Fecha Nacimiento</th>
       <th scope="col">Telefono</th>
-      <th scope="col">Correo Electronico</th>
       <th scope="col">Direccion</th>
 
     </tr>
@@ -44,9 +42,7 @@
                 <td><?php echo $row->primerApellido; ?></td>
                 <td><?php echo $row->segundoApellido; ?></td>
                 <td><?php echo $row->cedulaIdentidad; ?></td>
-                <td><?php echo formatearFecha($row->fechaNacimiento); ?></td>
                 <td><?php echo $row->telefono; ?></td>
-                <td><?php echo $row->correoElectronico; ?></td>
                 <td><?php echo $row->direccion; ?></td>
 
         </tr>

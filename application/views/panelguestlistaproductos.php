@@ -7,7 +7,7 @@
             <h1 class="text-gray-100">Panel de Invitados</h1>
 
             <?php 
-            echo form_open_multipart('motocicleta/agregar');
+            echo form_open_multipart('producto/agregar');
             ?>
             <button type="submit" class="btn btn-primary" name="enviar">Agregar Motocicleta</button>
             <?php   
@@ -27,6 +27,7 @@
                     <th scope="col">Nro. Chasis</th>
                     <th scope="col">Nro. Motor</th>
                     <th scope="col">Poliza</th>
+                    <th scope="col">Precio</th>
                     <th scope="col">Fecha Registro</th>
 
 
@@ -35,19 +36,20 @@
                 <tbody>
                     <?php
                     $indice=1;
-                    foreach ($motocicletas->result() as $row)
+                    foreach ($productos->result() as $row)
                     {
                         ?>
 
                         <tr>
                                 <th scope="row"><?php echo $indice; ?></th>
-                                <td><?php echo $row->marca; ?></td>
-                                <td><?php echo $row->tipoModelo; ?></td>
+                                <td><?php echo $row->nombreMarca; ?></td>
+                                <td><?php echo $row->nombreModelo; ?></td>
                                 <td><?php echo $row->color; ?></td>
                                 <td><?php echo $row->anioModelo; ?></td>
                                 <td><?php echo $row->nroChasis; ?></td>
                                 <td><?php echo $row->nroMotor; ?></td>
                                 <td><?php echo $row->poliza; ?></td>
+                                <td><?php echo $row->precio; ?></td>
                                 <td><?php echo formatearFechaHora($row->fechaRegistro); ?></td>
 
                         </tr>
