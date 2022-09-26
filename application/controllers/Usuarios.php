@@ -157,8 +157,7 @@ class Usuarios extends CI_Controller {
                 $this->load->view('inc/topbarsbadmin2');
                 $this->load->view('formulariomodificarusuario',$data);
                 $this->load->view('inc/creditossbadmin2');
-                $this->load->view('inc/footersbadmin2');
-                $data['fechaActualizacion']=date('Y-m-d H:i:s');
+                $this->load->view('inc/footersbadmin2');                
 
         }
 
@@ -175,7 +174,7 @@ class Usuarios extends CI_Controller {
                 $data['telefono']=$_POST['telefono'];
                 $data['direccion']=$_POST['direccion'];
                 $data['idSucursal']=$_POST['idSucursal'];
-                
+                $data['fechaActualizacion']=date('Y-m-d H:i:s');
                 
                 $this->usuario_model->modificarusuario($idusuario,$data);
                 redirect('usuarios/index2','refresh');

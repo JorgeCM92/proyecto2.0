@@ -6,31 +6,45 @@
         <h2>Agregar Motocicleta</h2>
         
         <?php 
-        echo form_open_multipart('motocicleta/agregarbd');
+        echo form_open_multipart('producto/agregarbd');
         ?>
         <form class="row g-3">
             <div class="col-md-4">
-                <label for="inputMa" class="form-label">Marca:</label>
-                <input type="text" name="marca" class="form-control" placeholder="Ingrese la Marca" aria-label="First name" required>
+            <label for="inputMa" class="form-label">Marca:</label>
+            <select name="idMarca" class="form-control">
+                <option>Seleccione una Marca</option>
+                <?php
+                foreach($marca->result() as $row)
+                {?>
+                    <option value="<?php echo $row->idMarca;?>"><?php echo $row->nombreMarca;?></option>
+                <?php
+                }
+                ?>
+            </select>
             </div>
             <div class="col-md-4">
-                <label for="inputTM" class="form-label">Tipo de Modelo:</label>
-                <select name="tipomodelo" id="exampleInputTipo" class="form-control form-select form-select-lg" aria-label="First name" required >
-                    <option value="" disabled selected >Seleccione un tipo de modelo:</option>
-                    <option>CG110</option>
-                    <option>CB1</option>
-                    <option>CB125F</option>
-                    <option>CB160F</option>
-                    <option>CB250F</option>
-                    <option>XR150L</option>
-                    <option>XR190L</option>
-                    <option>XR250TORNADO</option>
-                    <option>CRF250F</option>
-                </select>
+            <label for="inputMo" class="form-label">Modelo:</label>
+            <select name="idModelo" class="form-control">
+                <option>Seleccione un Modelo</option>
+                <?php
+                foreach($modelo->result() as $row)
+                {?>
+                    <option value="<?php echo $row->idModelo;?>"><?php echo $row->nombreModelo;?></option>
+                <?php
+                }
+                ?>
+            </select>
             </div>
             <div class="col-md-4">
                 <label for="inputCo" class="form-label">Color:</label>
-                <input type="text" name="color" class="form-control" placeholder="Ingrese el color" aria-label="First name" required>
+                <select name="color" id="exampleInputColor" class="form-control form-select form-select-lg" aria-label="First name" required >
+                    <option value="" disabled selected >Seleccione un Color:</option>
+                    <option>ROJO</option>
+                    <option>BLANCO</option>
+                    <option>NEGRO</option>
+                    <option>PLOMO</option>
+                    <option>AZUL</option>
+                </select>
             </div>
             <div class="col-md-4">
                 <label for="inputAM" class="form-label">Año Modelo:</label>
@@ -47,6 +61,10 @@
             <div class="col-md-4">
                 <label for="inputPo" class="form-label">Poliza:</label>
                 <input type="text" name="poliza" class="form-control" id="inputPo" placeholder="Ingrese la Poliza" aria-label="First name" required>
+            </div>
+            <div class="col-md-4">
+                <label for="inputPre" class="form-label">Precio:</label>
+                <input type="text" name="precio" class="form-control" id="inputPre" placeholder="Ingrese el Precio" aria-label="First name" required>
             </div><br> 
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Agregar Motocicleta</button>

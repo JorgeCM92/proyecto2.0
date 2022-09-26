@@ -22,8 +22,8 @@
                 <?php echo form_close();?>
             </li>
             <li class="nav-item">
-                <?php echo form_open_multipart('motocicleta/index');?>
-                <button type="submit" class="btn btn-dark border-bottom-secondary border-left-secondary" >MOTOCICLETAS</button>
+                <?php echo form_open_multipart('producto/index');?>
+                <button type="submit" class="btn btn-dark border-bottom-secondary border-left-secondary" >PRODUCTOS</button>
                 <?php echo form_close();?>
             </li>
             <li class="nav-item">

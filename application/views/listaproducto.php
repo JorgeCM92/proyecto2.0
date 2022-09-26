@@ -3,17 +3,17 @@
     <div class="row bg-gradient-secondary">
         <div class=" ">
 
-        <h1 class="text-gray-100">LISTA DE MOTOCICLETAS</h1>
+        <h1 class="text-gray-100">LISTA DE PRODUCTOS</h1>
 
-        <?php echo form_open_multipart('motocicleta/listapdf'); ?>
+        <?php echo form_open_multipart('producto/listapdf'); ?>
         <button type="submit" class="btn btn-success" name="enviar">REPORTE PDF</button>
         <?php echo form_close(); ?>
         <br>
 
         <?php 
-        echo form_open_multipart('motocicleta/agregar');
+        echo form_open_multipart('producto/agregar');
         ?>
-        <button type="submit" class="btn btn-primary" name="enviar">Agregar Motocicleta</button>
+        <button type="submit" class="btn btn-primary" name="enviar">Agregar Producto</button>
         <?php   
         echo form_close();
         ?>
@@ -40,14 +40,14 @@
   <tbody>
     <?php
     $indice=1;
-    foreach ($motocicletas->result() as $row)
+    foreach ($productos->result() as $row)
     {
         ?>
 
         <tr>
                 <th scope="row"><?php echo $indice; ?></th>
-                <td><?php echo $row->marca; ?></td>
-                <td><?php echo $row->tipoModelo; ?></td>
+                <td><?php echo $row->nombreMarca; ?></td>
+                <td><?php echo $row->nombreModelo; ?></td>
                 <td><?php echo $row->color; ?></td>
                 <td><?php echo $row->anioModelo; ?></td>
                 <td><?php echo $row->nroChasis; ?></td>
@@ -57,15 +57,15 @@
                 
 
                 <td>
-                  <?php echo form_open_multipart('motocicleta/modificar'); ?>
-                  <input type="hidden" name="idmotocicleta" value="<?php echo $row->idMotocicleta; ?>">
+                  <?php echo form_open_multipart('producto/modificar'); ?>
+                  <input type="hidden" name="idproducto" value="<?php echo $row->idProducto; ?>">
                   <button type="submit" class="btn btn-success">MODIFICAR</button>
                   <?php echo form_close(); ?>
                 </td>
 
                 <td>
-                  <?php echo form_open_multipart('motocicleta/deshabilitarbd'); ?>
-                  <input type="hidden" name="idmotocicleta" value="<?php echo $row->idMotocicleta; ?>">
+                  <?php echo form_open_multipart('producto/deshabilitarbd'); ?>
+                  <input type="hidden" name="idproducto" value="<?php echo $row->idProducto; ?>">
                   <button type="submit" class="btn btn-danger" value="DESHABILITAR">ELIMINAR</button>
                   <?php echo form_close(); ?>
                 </td>

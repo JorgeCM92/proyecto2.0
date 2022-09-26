@@ -1,26 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Motocicleta extends CI_Controller {
+class Producto extends CI_Controller {
 
 	public function index()
 	{
                 if($this->session->userdata('tipo')=='admin')
                 {
-                        $lista=$this->motocicleta_model->listamotocicletas();
-                        $data['motocicletas']=$lista;
+                        $lista=$this->producto_model->listaproductos();
+                        $data['productos']=$lista;
 
 
                         $this->load->view('inc/headersbadmin2');
                         $this->load->view('inc/sidebarsbadmin2');
                         $this->load->view('inc/topbarsbadmin2');
-                        $this->load->view('listamotocicleta',$data);
+                        $this->load->view('listaproducto',$data);
                         $this->load->view('inc/creditossbadmin2');
                         $this->load->view('inc/footersbadmin2');
-                        /*$this->load->view('inc/header');
-                        $this->load->view('listamotocicleta',$data);
-                        $this->load->view('inc/footer');*/
-                        }
+                }
                 else
                 {
                         //El usuario no esta logueado
@@ -34,13 +31,13 @@ class Motocicleta extends CI_Controller {
 	{
                 if($this->session->userdata('tipo')=='guest')
                 {
-                        $lista=$this->motocicleta_model->listamotocicletas();
-                        $data['motocicletas']=$lista;
+                        $lista=$this->producto_model->listaproductos();
+                        $data['productos']=$lista;
                         
                         $this->load->view('inc/headersbadmin2');
                         $this->load->view('inc/sidebarsbadmin2guest');
                         $this->load->view('inc/topbarsbadmin2');
-                        $this->load->view('panelguestlistamotocicletas',$data);
+                        $this->load->view('panelguestlistaproductos',$data);
                         $this->load->view('inc/creditossbadmin2');
                         $this->load->view('inc/footersbadmin2');
                 }  
@@ -50,10 +47,14 @@ class Motocicleta extends CI_Controller {
 	{
                 if($this->session->userdata('tipo')=='admin')
                 {
+                        $lista=$this->marca_model->listamarcas();
+                        $data['marca']=$lista;
+                        $lista=$this->modelo_model->listamodelos();
+                        $data['modelo']=$lista;
                         $this->load->view('inc/headersbadmin2');
                         $this->load->view('inc/sidebarsbadmin2');
                         $this->load->view('inc/topbarsbadmin2');
-                        $this->load->view('formulariomoto');
+                        $this->load->view('formularioproducto',$data);
                         $this->load->view('inc/creditossbadmin2');
                         $this->load->view('inc/footersbadmin2');  
                 } 
@@ -62,107 +63,105 @@ class Motocicleta extends CI_Controller {
                         $this->load->view('inc/headersbadmin2');
                         $this->load->view('inc/sidebarsbadmin2guest');
                         $this->load->view('inc/topbarsbadmin2');
-                        $this->load->view('formulariomoto');
+                        $this->load->view('formularioproducto');
                         $this->load->view('inc/creditossbadmin2');
                         $this->load->view('inc/footersbadmin2');      
                 }     
-                /*$this->load->view('inc/header');
-                $this->load->view('formulariomoto');
-                $this->load->view('inc/footer');*/	
+	
 	}
 
         public function agregarbd()
 	{
-                $data['marca']=$_POST['marca'];
-                $data['tipoModelo']=$_POST['tipomodelo'];
                 $data['color']=$_POST['color'];
-                $data['anioModelo']=$_POST['aniomodelo'];
+                $data['anioModelo']=$_POST['aniomodelo'];                
                 $data['nroChasis']=$_POST['nrochasis'];
                 $data['nroMotor']=$_POST['nromotor'];
                 $data['poliza']=$_POST['poliza'];
+                $data['precio']=$_POST['precio'];                  
+                $data['idMarca']=$_POST['idMarca'];
+                $data['idModelo']=$_POST['idModelo'];
                 
-                $this->motocicleta_model->agregarmotocicleta($data);
-                redirect('motocicleta/index','refresh');
+                $this->producto_model->agregarproducto($data);
+                redirect('producto/index','refresh');
 	}
 
         public function eliminarbd()
         {
-                $idmotocicleta=$_POST['idmotocicleta'];
-                $this->motocicleta_model->eliminarmotocicleta($idmotocicleta);
-                redirect('motocicleta/index','refresh');
+                $idproducto=$_POST['idproducto'];
+                $this->producto_model->eliminarproducto($idproducto);
+                redirect('producto/index','refresh');
         }
 
         public function modificar()
         {
-                $idmotocicleta=$_POST['idmotocicleta'];
-                $data['infomotocicleta']=$this->motocicleta_model->recuperarmotocicleta($idmotocicleta);
+                $idproducto=$_POST['idproducto'];
+                $data['infoproducto']=$this->producto_model->recuperarproducto($idproducto);
                 
+                $lista=$this->marca_model->listamarcas();
+                $data['marca']=$lista;
+                $lista=$this->modelo_model->listamodelos();
+                $data['modelo']=$lista;
                 $this->load->view('inc/headersbadmin2');
                 $this->load->view('inc/sidebarsbadmin2');
                 $this->load->view('inc/topbarsbadmin2');
-                $this->load->view('formulariomotomodificar',$data);
+                $this->load->view('formularioproductomodificar',$data);
                 $this->load->view('inc/creditossbadmin2');
                 $this->load->view('inc/footersbadmin2');
-                /*$this->load->view('inc/header');
-                $this->load->view('formulariomotomodificar',$data);
-                $this->load->view('inc/footer');*/
         }
 
         public function modificarbd()
         {
-                $idmotocicleta=$_POST['idmotocicleta'];
-                $data['marca']=$_POST['marca'];
-                $data['tipoModelo']=$_POST['tipomodelo'];
+                $idproducto=$_POST['idproducto'];
                 $data['color']=$_POST['color'];
                 $data['anioModelo']=$_POST['aniomodelo'];
                 $data['nroChasis']=$_POST['nrochasis'];
                 $data['nroMotor']=$_POST['nromotor'];
                 $data['poliza']=$_POST['poliza'];
+                $data['precio']=$_POST['precio'];
+                $data['idMarca']=$_POST['idMarca'];
+                $data['idModelo']=$_POST['idModelo'];
                 $data['fechaActualizacion']=date('Y-m-d H:i:s');
                 
-                $this->motocicleta_model->modificarmotocicleta($idmotocicleta,$data);
-                redirect('motocicleta/index','refresh');
+                $this->producto_model->modificarproducto($idproducto,$data);
+                redirect('producto/index','refresh');
         }
 
         public function deshabilitarbd()
         {
-                $idmotocicleta=$_POST['idmotocicleta'];
+                $idproducto=$_POST['idproducto'];
                 $data['estado']='0';
 
-                $this->motocicleta_model->modificarmotocicleta($idmotocicleta,$data);
-                redirect('motocicleta/index','refresh');
+                $this->producto_model->modificarproducto($idproducto,$data);
+                redirect('producto/index','refresh');
         }
 
         public function deshabilitados()
         {
-                $lista=$this->motocicleta_model->listamotocicletasdeshabilitados();
-                $data['motocicletas']=$lista;
+                $lista=$this->producto_model->listaproductosdeshabilitados();
+                $data['productos']=$lista;
 
                 $this->load->view('inc/headersbadmin2');
                 $this->load->view('inc/sidebarsbadmin2');
                 $this->load->view('inc/topbarsbadmin2');
-                $this->load->view('listamotodeshabilitados',$data);
+                $this->load->view('listaproductodeshabilitados',$data);
                 $this->load->view('inc/creditossbadmin2');
                 $this->load->view('inc/footersbadmin2');
-                /*$this->load->view('inc/header');
-                $this->load->view('listamotodeshabilitados',$data);////////
-                $this->load->view('inc/footer');*/
         }
 
         public function habilitarbd()
         {
-                $idmotocicleta=$_POST['idmotocicleta'];
+                $idproducto=$_POST['idproducto'];
                 $data['estado']='1';
 
-                $this->motocicleta_model->modificarmotocicleta($idmotocicleta,$data);
-                redirect('motocicleta/deshabilitados','refresh');
+                $this->producto_model->modificarproducto($idproducto,$data);
+                redirect('producto/deshabilitados','refresh');
         }
         public function listapdf()
 	{
 
                 if($this->session->userdata('login'))
                 {
-                        $lista=$this->motocicleta_model->listamotocicletas();
+                        $lista=$this->producto_model->listaproductos();
                         $lista=$lista->result();
 
                         $this->pdf=new Pdf();
@@ -175,13 +174,13 @@ class Motocicleta extends CI_Controller {
                                 A3,A4,A5,Letter,Legal
                         */
                         $this->pdf->AliasNbPages();
-                        $this->pdf->SetTitle("Lista de motocicletas");//Configuaraion del titulo
+                        $this->pdf->SetTitle("Lista de productos");//Configuaraion del titulo
                         $this->pdf->SetLeftMargin(15);//Configuaraion del margen izquierdo
                         $this->pdf->SetRightMargin(15);//Configuaraion del margen derecho
                         $this->pdf->SetFillColor(210,210,210);//Configuaraion del color de fondo
                         $this->pdf->SetFont('Arial','BU',13);//Configuaraion de la fuente de la letre
                         $this->pdf->Cell(30);//Configuaraion de una celda
-                        $this->pdf->Cell(120,10,'LISTA DE MOTOCICLETAS',0,0,'C',1);
+                        $this->pdf->Cell(120,10,'LISTA DE PRODUCTOS',0,0,'C',1);
                         //ANCHO/ALTO/TEXTO/BORDE/ORDEN DE LA SIGUIENTE CELDA/ALINEACION=C=CENTER,R=RIGHT,L=LEFT/FILL 0=NO,1=SI/
 
                         //ORDEN DE LA SIGUIENTE CELDA
@@ -230,7 +229,7 @@ class Motocicleta extends CI_Controller {
                                 $this->pdf->Ln(5);
                         }
 
-                        $this->pdf->Output("listamotocicletas.pdf","I");
+                        $this->pdf->Output("listaproductos.pdf","I");
      
                 }
                 else
