@@ -38,10 +38,18 @@ class Usuario_model extends CI_Model {
 
         public function recuperarusuario($idusuario)
         {
-                $this->db->select('*'); //select *
+
+                $this->db->select('U.idUsuario, U.login, U.password, U.tipo, U.nombres, U.primerApellido, U.segundoApellido, U.cedulaIdentidad, 
+                U.telefono, U.direccion, U.estado, U.idSucursal, S.idSucursal, S.nombreSucursal'); //select *
+                $this->db->from('usuario U'); //tabla
+                $this->db->where('U.idUsuario',$idusuario);
+                $this->db->join('sucursal S', 'S.idSucursal=U.idSucursal');
+                return $this->db->get(); //devolucion del resultado de la consulta
+                
+                /*$this->db->select('*'); //select *
                 $this->db->from('usuario'); //tabla
                 $this->db->where('idUsuario',$idusuario);
-                return $this->db->get(); //devolucion del resultado de la consulta
+                return $this->db->get(); //devolucion del resultado de la consulta*/
         }
 
         public function modificarusuario($idusuario,$data)

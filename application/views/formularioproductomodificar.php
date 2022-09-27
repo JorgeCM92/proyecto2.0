@@ -15,13 +15,13 @@
             <div class="col-md-4">
             <label for="inputMa" class="form-label">Marca:</label>
             <select name="idMarca" class="form-control">
-                <option>Seleccione una Marca</option>
+                <option value="<?php echo $row->idMarca; ?>"><?php echo $row->nombreMarca;?></option>
                 <?php
-                foreach($marca->result() as $marow)
+                foreach($marca->result() as $marow2)
                 {
                     ?>
-                        <option value="<?php echo $marow->idMarca; ?>">
-                            <?php echo $marow->nombreMarca;?>
+                        <option value="<?php echo $marow2->idMarca; ?>">
+                            <?php echo $marow2->nombreMarca;?>
                         </option>
                     <?php
                 }
@@ -31,11 +31,11 @@
             <div class="col-md-4">
             <label for="inputMo" class="form-label">Modelo:</label>
             <select name="idModelo" class="form-control">
-                <option>Seleccione un Modelo</option>
+                <option value="<?php echo $row->idModelo;?>"><?php echo $row->nombreModelo;?></option>
                 <?php
-                foreach($modelo->result() as $mrow)
+                foreach($modelo->result() as $mrow2)
                 {?>
-                    <option value="<?php echo $mrow->idModelo;?>"><?php echo $mrow->nombreModelo;?></option>
+                    <option value="<?php echo $mrow2->idModelo;?>"><?php echo $mrow2->nombreModelo;?></option>
                 <?php
                 }
                 ?>
@@ -43,13 +43,8 @@
             </div>
             <div class="col-md-4">
                 <label for="inputCo" class="form-label">Color:</label>
-                <select name="color" id="exampleInputColor" class="form-control form-select form-select-lg" aria-label="First name" required value="<?php echo $row->color; ?>">
-                    <option value="" disabled selected >Seleccione un Color:</option>
-                    <option>ROJO</option>
-                    <option>BLANCO</option>
-                    <option>NEGRO</option>
-                    <option>PLOMO</option>
-                    <option>AZUL</option>
+                <select name="color" id="exampleInputColor" class="form-control form-select form-select-lg" aria-label="First name" required >
+                    <option value="<?php echo $row->idProducto; ?>" ><?php echo $row->color;?></option>
                 </select>
             </div>
             <div class="col-md-4">

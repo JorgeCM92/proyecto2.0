@@ -21,31 +21,34 @@
             </div>
             <div class="col-md-6">
                 <label for="inputPas" class="form-label">Rol Usuario:</label>
-                <select name="tipo" id="exampleInputTipo" class="form-control form-select form-select-lg" required value="<?php echo $row->tipo; ?>">
-                    <option value="" disabled selected >Seleccione un rol:</option>
-                    <option>admin</option>
-                    <option>guest</option>
+                <select name="tipo" id="exampleInputTipo" class="form-control form-select form-select-lg" required>
+                    <option value="<?php echo $row->idUsuario; ?>"><?php echo $row->tipo;?></option>
                 </select>
             </div><br>
             <div class="col-md-6">
                 <label for="inputN" class="form-label">Nombres:</label>
-                <input type="text" name="nombres" class="form-control" placeholder="Ingrese su nombre" aria-label="First name" required value="<?php echo $row->nombres; ?>">
+                <input type="text" name="nombres" class="form-control" placeholder="Ingrese su nombre" aria-label="First name" 
+                required value="<?php echo $row->nombres; ?>">
             </div>
             <div class="col-md-6">
                 <label for="inputPA" class="form-label">Primer Apellido:</label>
-                <input type="text" name="primerapellido" class="form-control" placeholder="Ingrese su primer apellido" aria-label="First name" required value="<?php echo $row->primerApellido; ?>">
+                <input type="text" name="primerapellido" class="form-control" placeholder="Ingrese su primer apellido" aria-label="First name" 
+                required value="<?php echo $row->primerApellido; ?>">
             </div>
             <div class="col-md-6">
                 <label for="inputSA" class="form-label">Segundo Apellido:</label>
-                <input type="text" name="segundoapellido" class="form-control" placeholder="Ingrese su segundo apellido" aria-label="First name" value="<?php echo $row->segundoApellido; ?>">
+                <input type="text" name="segundoapellido" class="form-control" placeholder="Ingrese su segundo apellido" aria-label="First name" 
+                value="<?php echo $row->segundoApellido; ?>">
             </div>
             <div class="col-md-2">
                 <label for="inputCI" class="form-label">Cedula Identidad:</label>
-                <input type="text" name="cedulaidentidad" class="form-control" id="inputCI" placeholder="Cedula Identidad" required value="<?php echo $row->cedulaIdentidad; ?>">
+                <input type="text" name="cedulaidentidad" class="form-control" id="inputCI" placeholder="Cedula Identidad" required 
+                value="<?php echo $row->cedulaIdentidad; ?>">
             </div>
             <div class="col-md-6">
                 <label for="inputT" class="form-label">Telefono:</label>
-                <input type="text" name="telefono" class="form-control" id="inputT" placeholder="Ingrese su telefono" required value="<?php echo $row->telefono; ?>">
+                <input type="text" name="telefono" class="form-control" id="inputT" placeholder="Ingrese su telefono" required 
+                value="<?php echo $row->telefono; ?>">
             </div>
             <div class="col-12">
                 <label for="inputAddress2" class="form-label">Direccion:</label>
@@ -54,11 +57,11 @@
             <div class="col-12">
             <label for="inputT" class="form-label">Sucursal:</label>
             <select name="idSucursal" class="form-control">
-                <option>Seleccione una Sucursal</option>
+                <option value="<?php echo $row->idSucursal;?>"><?php echo $row->nombreSucursal;?></option>
                 <?php
-                foreach($sucursal->result() as $row)
+                foreach($sucursal->result() as $row2)
                 {?>
-                    <option value="<?php echo $row->idSucursal;?>"><?php echo $row->nombreSucursal;?></option>
+                    <option value="<?php echo $row2->idSucursal;?>"><?php echo $row2->nombreSucursal;?></option>
                 <?php
                 }
                 ?>
