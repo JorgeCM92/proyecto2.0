@@ -9,6 +9,11 @@
         <button type="submit" class="btn btn-success" name="enviar">REPORTE PDF</button>
         <?php echo form_close(); ?>
         <br>
+        <br>
+        <?php echo form_open_multipart('producto/deshabilitados');?>
+        <button type="submit" class="btn btn-warning" name="deshabilitados">VER PRODUCTOS DESHABILITADOS</button>
+        <?php echo form_close();?>
+        <br>
 
         <?php 
         echo form_open_multipart('producto/agregar');
