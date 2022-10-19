@@ -22,10 +22,9 @@ class Venta_model extends CI_Model
 
    public function buscarProducto($data) //get
    {
-      $this->db->like('marca.nombreMarca', $data);
-      $this->db->from('producto'); //tabla productos
+      $this->db->like('producto.idProducto', $data);
+      $this->db->from('producto.producto'); //tabla productos
       $this->db->where('producto.estado', '1'); //condición where estado = 1
-      $this->db->join('marca', 'marca.idMarca = producto.idMarca');
       return $this->db->get();
    }
 
@@ -37,25 +36,23 @@ class Venta_model extends CI_Model
       if (isset($postData['search'])) {
          // Select record
          $this->db->select('*');
-         $this->db->from('bddMilivoy.producto'); //tabla productos
-         $this->db->join('bddMilivoy.marca ', 'marca.idMarca = producto.idMarca');
-         $this->db->join('bddMilivoy.modelo', 'modelo.idModelo = producto.idModelo');
-         $this->db->where("producto.nroChasis like '%" . $postData['search'] . "%' ");
-         $this->db->where('producto.estado', '1'); //condición where estado = 1
+         $this->db->from('producto'); //tabla productos
+         $this->db->where("idProducto like '%" . $postData['search'] . "%' ");
+         $this->db->where('estado', '1'); //condición where estado = 1
 
 
          $records = $this->db->get()->result();
 
 
          foreach ($records as $row) {
-            $value = $row->nroChasis . ' - ' . $row->nombreMarca;
+            //$value = $row->nroChasis . ' - ' . $row->nombreMarca;
             $response2[] = array(
-               "value" => $value,
-               "nombre" => $row->nroChasis,
-               "modelo" => $row->nombreModelo,
-               "marca" => $row->nombreMarca,
-               "precioUnitario" => $row->precio,
-               "idProducto" => $row->idProducto,
+               //"value" => $value,
+               "value" => $row->idProducto,
+               //"nombre" => $row->nroChasis,
+               //"modelo" => $row->nombreModelo,
+               //"marca" => $row->nombreMarca,
+               "precioUnitario" => $row->precio
             );
          }
       }
@@ -86,28 +83,28 @@ class Venta_model extends CI_Model
    //     return $response2;
    //  }
 
-   function getMarcas($postData)
+  /* function getMarcas($postData)
    {
 
       $response2 = array();
       if (isset($postData['search'])) {
          // Select record
          $this->db->select('*');
-         $this->db->from('bddMilivoy.marca'); //tabla productos
-         $this->db->join('bddMilivoy.producto ', 'marca.idMarca = producto.idMarca');
-         $this->db->where("persona.marca like '%" . $postData['search'] . "%' ");
+         $this->db->from('marca.marca'); //tabla productos
+         $this->db->join('producto.producto ', 'marca.idMarca = producto.idMarca');
+         $this->db->where("marca.nombreMarca like '%" . $postData['search'] . "%' ");
          $this->db->where('producto.nroChasis', $postData); //condición where estado = 1
 
          $records = $this->db->get()->result();
 
          foreach ($records as $row) {
             $response2[] = array(
-               "value" => $row->nombreMarca, "primerApellido" => $row->primerApellido, "segundoApellido" => $row->segundoApellido, "carnet" => $row->numeroCI
+               "value" => $row->nombreMarca,"idMarca"=>$row->idMarca
             );
          }
       }
       return $response2;
-   }
+   }*/
 
 
 

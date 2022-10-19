@@ -58,8 +58,13 @@ class Cliente_model extends CI_Model {
           $records = $this->db->get()->result();
    
           foreach($records as $row ){
-             $response2[] = array("value"=>$row->cedulaIdentidad,"cedulaIdentidad"=>$row->cedulaIdentidad,"idCliente"=>$row->idCliente,"primerApellido"=>$row->primerApellido
-             ,"segundoApellido"=>$row->segundoApellido,"nombres"=>$row->nombres);
+             $response2[] = array(
+                "value"=>$row->cedulaIdentidad,
+                "cedulaIdentidad"=>$row->cedulaIdentidad,
+                "idCliente"=>$row->idCliente,
+                "primerApellido"=>$row->primerApellido,
+                "segundoApellido"=>$row->segundoApellido,
+                "nombres"=>$row->nombres);
             }
    
         }

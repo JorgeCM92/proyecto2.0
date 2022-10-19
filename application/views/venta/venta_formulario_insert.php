@@ -50,7 +50,7 @@
                             <div class="col-md-5">
                                 <input type="search" name="carnet" id="carnet" class="form-control"></input>
                             </div>
-                            <input hidden name="idclient" id="idclient" value="0">
+                            <input type="text" name="idcli" id="idcli" value="0" class="form-control">
                             <input hidden name="idUsuario" id="idUsuario" value="0">
 
 
@@ -78,15 +78,12 @@
                             <div class="col-md-5">
                                 <input id="segundoA" disabled class="form-control" placeholder="Sin segundo apellido" value=""></input>
                             </div>
-                            <input type="hidden" name="idProducto" id="idProducto" value="0">
                         </div>
 
                         <button hidden type="submit" class="btn btn-success">
                             <i class="fa fa-plus-circle"></i> Agregar cliente
                         </button>
-                        <?php
-                        echo form_close();
-                        ?>
+
                     </div><!-- Fin Div x_content -->
                 </div><!-- Fin Div x_panel -->
             </div><!-- Fin Div col-md-12 col-sm-12  -->
@@ -105,39 +102,26 @@
                     </div>
                     <div class="x_content">
                         <!-- Inicio Div x_content -->
-                        <?php
-                        echo form_open_multipart('venta/insertVenta');
-                        ?>
 
                         <div class="item form-group has-feedback">
 
                             <label class="col-form-label col-md-1 label-align" for="nombre">Nombre Producto:</label>
                             <div class="col-md-3">
-                                <input type="search" class="form-control" value="" name="producto" id="producto" placeholder="Escriba nombre del producto" />
-                                <input type="hidden" name="producto1" id="producto1" value="">
+                                <input type="search" class="form-control" value="" name="idProdu" id="producto" placeholder="Escriba nombre del producto" />
+                                
 
                             </div>
 
-                            <label class="col-form-label col-md-1 label-align">Marca:</label>
-
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" value="" name="marca" id="marca" placeholder="Escriba alguna marca" />
-                                <input type="hidden" name="marca1" id="marca1" value="">
-
-                            </div>
 
                             <label class="col-form-label col-md-1 label-align" for="Cantidad">Precio Unitario:</label>
                             <div class="col-md-3">
                                 <input name="precioU" disabled id="precioU" class="form-control" value="Sin precio Unitario"></input>
-                                <input type="hidden" name="precioU1" id="precioU1" value="0">
-
                             </div>
-                            <input type="hidden" name="idProducto" id="idProducto" value="0">
                         </div>
 
 
 
-                        <!-- <div class="item form-group has-feedback">
+                        <div class="item form-group has-feedback">
                             <label class="col-form-label col-md-1 label-align" for="numerocelular">Cantidad:</label>
                             <div class="col-md-3">
                                 <input type="number" id="cantidad" value="0" name="cantidad" class="form-control" placeholder="0">
@@ -147,7 +131,7 @@
                             <div class="col-md-3">
                                 <input type="number" name="totalPrecio" id="totalPrecio" class="form-control">
                             </div>
-                        </div> -->
+                        </div>
                         <button id="agregarTabla" disabled type="text" class="btn btn-success">
                             <i class="fa fa-plus-circle"></i> Agregar a la tabla
                         </button>
@@ -171,7 +155,6 @@
                     <thead>
                         <tr class="headings">
                             
-                            <th class="column-title">Foto </th>
                             <th class="column-title">Nombre </th>
                             <th class="column-title">Marca </th>
                             <th class="column-title">Precio </th>
@@ -227,16 +210,13 @@
                     console.log(data);
                     response(data);
                 },
-                error: function(xhr, status) {
-                    alert('Disculpe, existió un problema');
-                },
             });
         },
         select: function(event, ui) {
-            $('#producto').val(ui.item.nroChasis); // display the selected text
-            $('#marca').val(ui.item.marca); // display the selected text
+            $('#producto').val(ui.item.value); // display the selected text
+            //$('#marca').val(ui.item.nombreMarca); // display the selected text
             $('#precioU').val(ui.item.precioUnitario); // save selected id to input
-            $('#idProducto').val(ui.item.idProducto); // save selected id to input
+            $('#idProdu').val(ui.item.idProducto); // save selected id to input
             $('button[id=agregarTabla]').removeAttr('disabled');
             producto = ui.item;
             return false;
@@ -266,7 +246,7 @@
             $('#primerA').val(ui.item.primerApellido); // display the selected text
             $('#segundoA').val(ui.item.segundoApellido); // display the selected text
             $('#nombre').val(ui.item.nombres); // save selected id to input
-            $('#idclient').val(ui.item.idCliente); // save selected id to input
+            $('#idcli').val(ui.item.idCliente); // save selected id to input
             return false;
         }
     });

@@ -81,7 +81,7 @@ class Venta extends CI_Controller
 
 
             foreach ($query->result() as $row) {
-                echo "<li class='list-group-item'><a href='javascript:void(0)' data-producto='producto'>$row->nombreMarca</a></li>";
+                echo "<li class='list-group-item'><a href='javascript:void(0)' data-producto='producto'>$row->idProducto</a></li>";
             }
         } else {
             echo "<li> <em> No se encuentra... </em> </li>";
@@ -99,7 +99,7 @@ class Venta extends CI_Controller
         echo json_encode($data);
     }
 
-    public function marcaList()
+    /*public function marcaList()
     {
 
         // POST data
@@ -109,7 +109,7 @@ class Venta extends CI_Controller
         $data = $this->venta_model->getMarcas($producto);
 
         echo json_encode($data);
-    }
+    }*/
 
     public function clientList()
     {
@@ -126,15 +126,15 @@ class Venta extends CI_Controller
     public function insertVenta()
     {
 
-        $data['idCliente'] = $_POST['idclient'];
+        $data['idCliente'] = $_POST['idcli'];
         $data['idUsuario'] =  $_SESSION['idusuario'];
         $data['estado'] = 1;
 
         // $data['idVenta'] = $_POST['idCliente'];
-        $data['idProducto'] = $_POST['idProducto'];
+        $data['idProducto'] = $_POST['idProdu'];
         $data['cantidad'] =  $_POST['cantidad'];
 
-        $data['precioVenta'] = $_POST['totalPrecio'];
+        $data['precioTotal'] = $_POST['totalPrecio'];
 
         if ($this->venta_model->registrar($data)) {
             redirect('venta/index', 'refresh');
@@ -150,7 +150,7 @@ class Venta extends CI_Controller
     public function modificarVenta()
     {
         $data['precioVenta'] = $_POST['totalPrecio'];
-        $data['idCliente'] = $_POST['idclient'];
+        $data['idCliente'] = $_POST['idcliente'];
         $data['idUsuario'] =  $_SESSION['idusuario'];
         $id =  $_POST['idVenta'];
         $data['estado'] = 1;
