@@ -48,6 +48,7 @@
                 <td><?php echo $row->login; ?></td>
                 <td><?php echo $row->tipo; ?></td>
                 <td><?php echo ($row->nombres.' '.$row->primerApellido.' '.$row->segundoApellido); ?></td>
+                <!-- <td><?php echo $row->nombres ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></td> OTRA FORMA DE CONCATENAR--> 
                 <td><?php echo $row->cedulaIdentidad; ?></td>
                 <td><?php echo $row->telefono; ?></td>
                 <td><?php echo $row->direccion; ?></td>

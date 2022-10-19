@@ -14,8 +14,7 @@
 
     </head>
 
-    <body class="bg-gray-900 sidebar-dark ">
-
+    <body style="background-image: url('/img/1.jpg') no-repeat; background-size: cover;">
 
         <?php
         echo form_open_multipart('usuarios/validar');

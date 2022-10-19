@@ -16,6 +16,12 @@
             <br>
             <br>
             
+
+            <li class="nav-item">
+                <?php echo form_open_multipart('dashboard/index');?>
+                <button type="submit" class="btn btn-dark border-bottom-secondary border-left-secondary  " >DASHBOARD</button>
+                <?php echo form_close();?>
+            </li>
             <li class="nav-item">
                 <?php echo form_open_multipart('cliente/index');?>
                 <button type="submit" class="btn btn-dark border-bottom-secondary border-left-secondary  " >CLIENTES</button>
@@ -44,6 +50,11 @@
             <li class="nav-item">
                 <?php echo form_open_multipart('modelo/index');?>
                 <button type="submit" class="btn btn-dark border-bottom-secondary border-left-secondary" >MODELOS</button>
+                <?php echo form_close();?>
+            </li>
+            <li class="nav-item">
+                <?php echo form_open_multipart('venta/index');?>
+                <button type="submit" class="btn btn-dark border-bottom-secondary border-left-secondary" >VENTA</button>
                 <?php echo form_close();?>
             </li>
 

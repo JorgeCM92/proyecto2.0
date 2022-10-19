@@ -45,4 +45,25 @@ class Cliente_model extends CI_Model {
                 return $this->db->get(); //devolucion del resultado de la consulta
         }
 
+        function getClients($postData){
+        // $postData['search'] = 7;
+        $response2 = array();
+        if(isset($postData['search']) ){
+          // Select record
+          $this->db->select('*');
+          $this->db->from('cliente'); //tabla productos
+          $this->db->where("cedulaIdentidad like '%".$postData['search']."%' ");
+          $this->db->where('estado','1'); //condición where estado = 1
+        
+          $records = $this->db->get()->result();
+   
+          foreach($records as $row ){
+             $response2[] = array("value"=>$row->cedulaIdentidad,"cedulaIdentidad"=>$row->cedulaIdentidad,"idCliente"=>$row->idCliente,"primerApellido"=>$row->primerApellido
+             ,"segundoApellido"=>$row->segundoApellido,"nombres"=>$row->nombres);
+            }
+   
+        }
+        return $response2;
+     }
+
 }
