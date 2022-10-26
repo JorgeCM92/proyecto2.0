@@ -50,12 +50,12 @@
                                     <table id="datatable-buttons" class="table table-dark table-striped" style="width:100%">
                                         <thead>
                                             <tr class="text-center table-dark text-dark">
-                                                <th>Producto</th>
-                                                <th>Precio</th>
+                                                <th>Modelo</th>
+                                                <th>Nro. Chasis</th>
                                                 <th>Cliente</th>
                                                 <th>Total</th>
-                                                <th>fechaRegistro</th>
-                                                <th>Modificado</th>
+                                                <th>Usuario</th>
+                                                <th>fecha</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
@@ -65,12 +65,12 @@
                                             {
                                         ?>
                                             <tr>
+                                                <td><?php echo $row->nombreModelo; ?></td>
                                                 <td><?php echo $row->nroChasis; ?></td>
-                                                <td><?php echo $row->precio; ?></td>
                                                 <td><?php echo $row->nombres. ' '.$row->primerApellido ; ?></td>
                                                 <td><?php echo $row->precioVenta; ?></td>
+                                                <td><?php echo $row->login; ?></td>
                                                 <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
-                                                <td><?php echo formatearFecha($row->fechaActualizacion); ?></td>
                                                 
 
                                     <td class="text-center">
@@ -79,6 +79,13 @@
                                             <input type="hidden" name="idVenta" value="<?php echo $row->idVenta;?>">
                                             <button class="btn btn-warning" data-toggle="tooltip"  data-placement="top" title="Editar">
                                             <i class="fa fa-edit"></i>
+                                            </button>
+                                            <?php echo form_close();?>
+
+                                            <?php echo form_open_multipart('venta/listapdf');?>
+                                            <input type="hidden" name="idVenta" value="<?php echo $row->idVenta;?>">
+                                            <button class="btn btn-warning" data-toggle="tooltip"  data-placement="top" title="Editar">
+                                            <i class="fa fa-user"></i>
                                             </button>
                                             <?php echo form_close();?>
 

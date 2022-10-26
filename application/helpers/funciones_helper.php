@@ -1,13 +1,19 @@
 <?php 
 function formatearFecha($fecha)
 {
-    /*2022-06-17 03:10:41*/
-    $dia=substr($fecha,8,2);
-    $mes=substr($fecha,5,2);
-    $anio=substr($fecha,0,4);
-    //$hora=substr($fecha,11,5);
-    $fechaformateada=$dia.'/'.$mes.'/'.$anio;
-    return $fechaformateada;
+    if($fecha) {
+        /*2022-06-17 03:10:41*/
+        $dia=substr($fecha,8,2);
+        $mes=substr($fecha,5,2);
+        $anio=substr($fecha,0,4);
+        //$hora=substr($fecha,11,5);
+        $fechaformateada=$dia.'/'.$mes.'/'.$anio;
+        return $fechaformateada;
+    }
+    else{
+        return '';
+    }
+    
 }
 
 function formatearFechaHora($fecha)

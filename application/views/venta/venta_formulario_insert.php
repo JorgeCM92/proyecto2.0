@@ -50,7 +50,7 @@
                             <div class="col-md-5">
                                 <input type="search" name="carnet" id="carnet" class="form-control"></input>
                             </div>
-                            <input type="text" name="idcli" id="idcli" value="0" class="form-control">
+                            <input hidden name="idcli" id="idcli" value="0" class="form-control">
                             <input hidden name="idUsuario" id="idUsuario" value="0">
 
 
@@ -107,10 +107,9 @@
 
                             <label class="col-form-label col-md-1 label-align" for="nombre">Nombre Producto:</label>
                             <div class="col-md-3">
-                                <input type="search" class="form-control" value="" name="idProdu" id="producto" placeholder="Escriba nombre del producto" />
-                                
-
+                                <input type="search" class="form-control" value="" name="chasis" id="chasis" placeholder="Escriba nombre del producto" />
                             </div>
+                            <input hidden name="idProdu" id="idProdu" value="" class="form-control">
 
 
                             <label class="col-form-label col-md-1 label-align" for="Cantidad">Precio Unitario:</label>
@@ -136,9 +135,9 @@
                             <i class="fa fa-plus-circle"></i> Agregar a la tabla
                         </button>
 
-                        <button type="submit" class="btn btn-success">
-                            <i class="fa fa-plus-circle"></i> Insertar
-                        </button>
+                        <?php echo form_open_multipart('venta/listapdf'); ?>
+                        <button type="submit" class="btn btn-success" name="enviar"><i class="fa fa-plus-circle"></i> Insertar</button>
+                        <?php echo form_close(); ?>
                         
                         <?php
                         echo form_close();
@@ -196,7 +195,7 @@
 
  let producto = [];
 
-    $("#producto").autocomplete({
+    $("#chasis").autocomplete({
         source: function(request, response) {
             // Fetch data
             $.ajax({
@@ -210,10 +209,13 @@
                     console.log(data);
                     response(data);
                 },
+                error: function(xhr, status) {
+                    alert('Disculpe, existió un problema');
+                },
             });
         },
         select: function(event, ui) {
-            $('#producto').val(ui.item.value); // display the selected text
+            $('#chasis').val(ui.item.value); // display the selected text
             //$('#marca').val(ui.item.nombreMarca); // display the selected text
             $('#precioU').val(ui.item.precioUnitario); // save selected id to input
             $('#idProdu').val(ui.item.idProducto); // save selected id to input

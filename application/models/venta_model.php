@@ -7,13 +7,19 @@ class Venta_model extends CI_Model
 
    public function listaventa() //select
    {
-      $this->db->select('*'); //select *
+      $this->db->select('venta.idVenta, venta.fechaRegistro, venta.fechaActualizacion, cliente.idCliente, cliente.nombres, 
+                        cliente.primerApellido, cliente.segundoApellido, cliente.cedulaIdentidad, usuario.idUsuario, usuario.login,
+                        sucursal.idSucursal, sucursal.nombreSucursal, sucursal.direccion, detalleventa.precioVenta, detalleventa.cantidad, producto.nroChasis, producto.color, 
+                        modelo.nombreModelo, marca.nombreMarca'); //select *
       $this->db->from('venta'); //tabla productos
       $this->db->where('venta.estado', '1'); //condición where estado = 1
       $this->db->join('cliente', 'venta.idCliente = cliente.idCliente');
       $this->db->join('usuario', 'venta.idUsuario= usuario.idUsuario');
+      $this->db->join('sucursal', 'usuario.idSucursal = sucursal.idSucursal');
       $this->db->join('detalleventa', 'venta.idVenta = detalleventa.idVenta');
       $this->db->join('producto', 'producto.idProducto = detalleventa.idProducto');
+      $this->db->join('modelo', 'producto.idModelo = modelo.idModelo');
+      $this->db->join('marca', 'producto.idMarca = marca.idMarca');
 
       //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
       return $this->db->get(); //devolucion del resultado de la consulta
@@ -37,7 +43,7 @@ class Venta_model extends CI_Model
          // Select record
          $this->db->select('*');
          $this->db->from('producto'); //tabla productos
-         $this->db->where("idProducto like '%" . $postData['search'] . "%' ");
+         $this->db->where("nroChasis like '%".$postData['search']."%' ");
          $this->db->where('estado', '1'); //condición where estado = 1
 
 
@@ -48,8 +54,9 @@ class Venta_model extends CI_Model
             //$value = $row->nroChasis . ' - ' . $row->nombreMarca;
             $response2[] = array(
                //"value" => $value,
-               "value" => $row->idProducto,
-               //"nombre" => $row->nroChasis,
+               "value" => $row->nroChasis,
+               "nroChasis" => $row->nroChasis,
+               "idProducto"=> $row->idProducto,
                //"modelo" => $row->nombreModelo,
                //"marca" => $row->nombreMarca,
                "precioUnitario" => $row->precio

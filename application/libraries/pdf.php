@@ -6,7 +6,7 @@
             //si se requiere agregar una imagen
             //$this->Image('ruta de la imagen',coordenada x,coordenada y,ancho,alto);
             $ruta=base_url("uploads/membrete.png");
-            $this->Image($ruta,50,30,170,170);
+            $this->Image($ruta,10,80,190,190);
 
             /*$this->SetFont('Arial','B',10);
             $this->Cell(30);

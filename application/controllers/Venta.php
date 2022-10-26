@@ -169,5 +169,4 @@ class Venta extends CI_Controller
     }
 
 
-    
 }
