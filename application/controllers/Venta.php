@@ -206,12 +206,12 @@ public function listapdf()
             $this->pdf->Ln();
             $this->pdf->Cell(20, 5, utf8_decode("Usuario: "), 0, 0, 'L');
             $this->pdf->SetFont('Arial', '', 10);
-            $this->pdf->Cell(20, 5, /$lista->login,/ 0, 1, 'L');
+            $this->pdf->Cell(20, 5, /*$lista->login,*/ 0, 1, 'L');
             $this->pdf->SetFont('Arial', 'B', 10);
             $this->pdf->Ln();
             $this->pdf->Cell(20, 5, utf8_decode("Sucursal: "), 0, 0, 'L');
             $this->pdf->SetFont('Arial', '', 10);
-            $this->pdf->Cell(20, 5, /$lista->nombreSucursal,/ 0, 1, 'L');
+            $this->pdf->Cell(20, 5, /*$lista->nombreSucursal,*/ 0, 1, 'L');
             $this->pdf->SetFont('Arial', 'B', 10);
             $this->pdf->Ln();
             $this->pdf->Cell(20, 5, utf8_decode("Dirección: "), 0, 0, 'L');
@@ -221,7 +221,7 @@ public function listapdf()
             $this->pdf->Ln();
             $this->pdf->Cell(20, 5, "Fecha: ", 0, 0, 'L');
             $this->pdf->SetFont('Arial', '', 10);
-            $this->pdf->Cell(20, 5, /$lista->fechaRegistro,/ 0, 1, 'L');
+            $this->pdf->Cell(20, 5, /*$lista->fechaRegistro,*/ 0, 1, 'L');
             $this->pdf->Ln();
             $this->pdf->Ln();            
             $this->pdf->SetFont('Arial', 'B', 10);
@@ -232,7 +232,7 @@ public function listapdf()
             $this->pdf->Cell(90, 5, utf8_decode('Nombre/Razon Social'), 0, 0, 'L');
             $this->pdf->Cell(50, 5, utf8_decode('C.I./NIT'), 0, 0, 'L');
             $this->pdf->SetFont('Arial', '', 10);
-            $this->pdf->Cell(90, 5, /$lista->nombres,/ 0, 0, 'L');
+            $this->pdf->Cell(90, 5, /*$lista->nombres,*/ 0, 0, 'L');
             $this->pdf->Cell(50, 5,/*$lista->cedulaIdentidad, */0, 0, 'L');
             $this->pdf->Ln(3);
             $this->pdf->SetFont('Arial', 'B', 10);
